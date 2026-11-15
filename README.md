@@ -14,36 +14,21 @@ This project follows the workflow used in GSscraper and packages the core steps 
 
 ## Installation
 
-Install the required R packages:
+With R installed, run the following in the R console to install the app's dependencies. Already-installed packages are skipped:
 
 ```r
-install.packages(c(
-  "shiny",
-  "RCurl",
-  "purrr",
-  "dplyr",
-  "shinyjs",
-  "shinyWidgets",
-  "textclean",
-  "stringi",
-  "magrittr",
-  "zen4R",
-  "shinyalert",
-  "shinybusy",
-  "strex"
-))
+install.packages(setdiff(c(
+  "shiny", "magrittr", "zip", "RCurl", "shinybusy", "purrr",
+  "dplyr", "shinyjs", "shinyWidgets", "textclean", "stringi", "mgsub"
+), rownames(installed.packages())))
 
-# install the additional dependency used by the scraping pipeline
-devtools::install_github("hrbrmstr/cfhttr")
+install.packages("remotes")
+remotes::install_github("hrbrmstr/cfhttr")
 ```
 
 ## Run the app
 
-```r
-shiny::runGitHub("GSscraper", "nealhaddaway", subdir = "inst/shiny-examples/GSscraper")
-```
-
-If you are adapting or extending this app locally, you can also run it from your project directory with:
+From the repository's project directory, start the app with:
 
 ```r
 shiny::runApp()
